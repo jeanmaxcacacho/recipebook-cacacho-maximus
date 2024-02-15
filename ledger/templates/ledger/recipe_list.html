@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Recipe List</title>
+    </head>
+    <body>
+        <h1>Welcome to the Recipe List!</h1>
+        <h2>Here are the recipes that we currently have access to...</h2>
+        <ul>
+            {% for recipe in ctx.recipes %}
+                <li>
+                    <strong>{{ recipe.name }}</strong>
+                    <ul>
+                        {% for ingredient in recipe.ingredients %}
+                            <li>{{ ingredient.name }} - {{ ingredient.quantity }}</li>
+                        {% endfor %}
+                    </ul>
+                    <a href="{{ recipe.link }}">View Recipe</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
