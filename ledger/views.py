@@ -136,6 +136,6 @@ def recipe_2(request):
                 "quantity": "1 kilo"
             }
         ],
-        "link": "/recipe/2"
+        "link": "/recipes/list"
     }
-    return render(request, 'ledger/recipe_2.html')
+    return render(request, 'ledger/recipe_2.html', ctx)
