@@ -97,7 +97,7 @@ def recipe_1(request):
                 "quantity": "1 packet"
             }
         ],
-        "link": "/recipe/1"
+        "link": "/recipes/list"
     }
     return render(request, 'ledger/recipe_1.html', ctx)
 
