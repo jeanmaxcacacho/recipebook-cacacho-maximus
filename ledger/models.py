@@ -4,25 +4,32 @@ from django.db import models
 
 
 class Ingredient(models.Model):
-    name = models.charField(max_length=100)
+    name = models.CharField(max_length=100)
 
 
     def __str__(self):
         return self.name
+
+    # url to what?
+    def get_absolute_url(self):
+        return reverse('', args=[str(self.name)])
 
 
 class Recipe(models.Model):
-    name = models.charField(max_length=100)
+    name = models.CharField(max_length=100)
 
 
     def __str__(self):
         return self.name
+
+
+    def get_absolute_url(self):
+        return reverse('', args=[str(self.name)])
 
 
 class RecipeIngredient(models.Model):
     quantity = models.IntegerField()
-    # are more parameters to add????????????????
-    ingredient = models.ForeignKey(
+    ingredient = models.ForeignKey(  # are there more parameters to add????????????????
             Ingredient,
             on_delete=models.CASCADE
         )
