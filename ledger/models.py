@@ -22,6 +22,7 @@ class Ingredient(models.Model):
     def __str__(self):
         return self.name
 
+
 # both views will use this model
 # this model accesses RecipeIngredient to get recipe and the ingredients associated with that recipe
 class Recipe(models.Model):
@@ -35,12 +36,14 @@ class Recipe(models.Model):
 
 # this model will be the "joining table"
 class RecipeIngredient(models.Model):
-    quantity = models.IntegerField()
+    quantity = models.CharField(max_length=20)
     ingredient = models.ForeignKey(  
             Ingredient,
-            on_delete=models.CASCADE
+            on_delete=models.CASCADE,
+            related_name = 'ingredients'
         )
     recipe = models.ForeignKey(
             Recipe,
-            on_delete=models.CASCADE
+            on_delete=models.CASCADE,
+            related_name = 'recipes'
         )
