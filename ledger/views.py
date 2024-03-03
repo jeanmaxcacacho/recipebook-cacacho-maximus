@@ -1,9 +1,13 @@
 from django.shortcuts import render
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from .models import *
 
 # Create your views here.
-def recipe_list(request):
-
-    ctx = {
+class recipe_list(ListView):
+    model = RecipeIngredient
+    template_name = '/ledger/recipe_list.html' 
+    objects = {
         "recipes": [
             {
                 "name": "Recipe 1",
@@ -68,12 +72,10 @@ def recipe_list(request):
         ]
     }
 
-    return render(request, 'ledger/recipe_list.html', ctx)
 
 
 def recipe_1(request):
-
-    ctx = {
+    objects_list = {
         "name": "Recipe 1",
         "ingredients": [
             {
@@ -99,12 +101,11 @@ def recipe_1(request):
         ],
         "link": "/recipes/list"
     }
-    return render(request, 'ledger/recipe_1.html', ctx)
+
 
 
 def recipe_2(request):
-
-    ctx = {
+    objects_list = {
         "name": "Recipe 2",
         "ingredients": [
             {
@@ -138,4 +139,3 @@ def recipe_2(request):
         ],
         "link": "/recipes/list"
     }
-    return render(request, 'ledger/recipe_2.html', ctx)
