@@ -9,6 +9,12 @@ https://www.youtube.com/watch?v=qJUgC4T5e_E
 https://www.youtube.com/watch?v=gf2-J9YOMcc
 """
 
+""" TODO:
+    - find a way for quantity field of RecipeIngredient be accessible (ask around)
+    - make view classes
+    - make templates
+"""
+
 # only two paths in ledger.urls and max 3 templates
 # we'll have og index view, list of all recipes
 # then have detail view of each recipe where only list of one recipe is rendered
