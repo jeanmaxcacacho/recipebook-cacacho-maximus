@@ -14,8 +14,8 @@ https://stackoverflow.com/questions/15306897/django-reverse-lookup-of-foreign-ke
     - populate models __DONE__
         - Recipe 1
         - Recipe 2
-    - make view classes
-    - make templates
+    - make view classes __DONE__
+    - make templates __DONE__
 """
 
 
