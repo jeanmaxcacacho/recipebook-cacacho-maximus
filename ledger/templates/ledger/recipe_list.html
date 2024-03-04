@@ -9,15 +9,16 @@
         <h2>Welcome to the Recipe List!</h2>
         <h3>Here are the recipes that we currently have access to...</h3>
         <ul>
-            {% for recipe in recipes %}
+            {% for recipe in Recipe.objects.all %}
                 <li>
                     <strong>{{ recipe.name }}</strong>
                     <ul>
-                        {% for ingredient in recipe.ingredients %}
-                            <li>{{ ingredient.name }} - {{ ingredient.quantity }}</li>
+                        {% for recipe_ingredient in recipe.ingredients.all %}
+                            <li>{{ recipe_ingredient.ingredient }} --- {{ recipe_ingredient.quantity }}</li>
                         {% endfor %}
                     </ul>
-                    <a href="{{ recipe.link }}">View Recipe</a>
+		    <!-- fix later -->
+                    <a href="">View Recipe</a>
                 </li>
             {% endfor %}
         </ul>
