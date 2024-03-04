@@ -8,8 +8,10 @@ from .models import Recipe
 # "index" view
 class recipe_list(ListView):
     template_name = 'ledger/recipe_list.html' 
-    model = Recipe
+    context_object_name = 'recipe_container'
 
+    def get_queryset(self):
+        return Recipe.objects.all()
 
 class recipe_detail(DetailView):
     template_name = 'ledger/recipe_detail.html'
