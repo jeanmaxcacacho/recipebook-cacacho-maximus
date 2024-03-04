@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+	<title>{{ recipe.name }}</title>
+    </head>
+    <body>
+        <h1>Recipe Book</h1>
+        <h2>{{ recipe.name }}</h2>
+        <ul>
+            {% for ingredient in recipe.recipes.all %}
+            <li>{{ ingredient.ingredient }} --- {{ ingredient.quantity }}</li>
+            {% endfor %}
+        </ul>
+        <a href="">Go Back</a>
+    </body>
+</html>
