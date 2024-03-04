@@ -11,7 +11,7 @@ https://stackoverflow.com/questions/15306897/django-reverse-lookup-of-foreign-ke
 """ TODO:
     - find a way for quantity field of RecipeIngredient be accessible (ask around) __DONE__
         - last night at 2 AM I learned what reverse lookups are :)
-    - populate models
+    - populate models __DONE__
         - Recipe 1
         - Recipe 2
     - make view classes
