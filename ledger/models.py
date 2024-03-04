@@ -5,51 +5,53 @@ from django.urls import reverse
 
 """
 https://stackoverflow.com/questions/2642613/what-is-related-name-used-for
-https://www.youtube.com/watch?v=qJUgC4T5e_E
-https://www.youtube.com/watch?v=gf2-J9YOMcc
+https://stackoverflow.com/questions/15306897/django-reverse-lookup-of-foreign-keys?fbclid=IwAR3DA6HZVz7oJ64uu6cJGfcfX9a0y0qf52tekSvRDSl-qbHzuxkHJkSoWdg
 """
 
 """ TODO:
-    - find a way for quantity field of RecipeIngredient be accessible (ask around)
+    - find a way for quantity field of RecipeIngredient be accessible (ask around) __DONE__
+        - last night at 2 AM I learned what reverse lookups are :)
+    - populate models
+        - Recipe 1
+        - Recipe 2
     - make view classes
     - make templates
 """
 
-# only two paths in ledger.urls and max 3 templates
-# we'll have og index view, list of all recipes
-# then have detail view of each recipe where only list of one recipe is rendered
 
-# I mean it says "just needs" not "should have" so............
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
-    recipes = models.ManyToManyField('Recipe', through='RecipeIngredient')
 
 
     def __str__(self):
         return self.name
 
 
-# both views will use this model
-# this model accesses RecipeIngredient to get recipe and the ingredients associated with that recipe
+    def get_absolute_url(self):
+        return reverse(self.name, args=[str(self.name)])
+
+
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
-    ingredients = models.ManyToManyField('Ingredient', through='RecipeIngredient')
 
 
     def __str__(self):
         return self.name
 
 
-# this model will be the "joining table"
+    def get_absolute_url(self):
+        return reverse(self.name, args=[str(self.name)])
+
+
 class RecipeIngredient(models.Model):
     quantity = models.CharField(max_length=20)
     ingredient = models.ForeignKey(  
             Ingredient,
             on_delete=models.CASCADE,
-            related_name = 'ingredients'
+            related_name = 'ingredients' # Ingredient.ingredients accesses RecipeIngredient from Ingredient
         )
     recipe = models.ForeignKey(
             Recipe,
             on_delete=models.CASCADE,
-            related_name = 'recipes'
+            related_name = 'recipes' # Recipe.recipes accesses RecipeIngredient from Recipe
         )
