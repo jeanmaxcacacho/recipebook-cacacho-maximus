@@ -18,7 +18,7 @@
                         {% endfor %}
                     </ul>
 		    <!-- fix later -->
-                    <a href="">View Recipe</a>
+		    <a href="{% url 'ledger:recipe_detail' recipe.pk %}">View Recipe</a>
                 </li>
             {% endfor %}
         </ul>

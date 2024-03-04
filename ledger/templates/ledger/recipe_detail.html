@@ -12,6 +12,6 @@
             <li>{{ ingredient.ingredient }} --- {{ ingredient.quantity }}</li>
             {% endfor %}
         </ul>
-        <a href="">Go Back</a>
+	<a href="{% url 'ledger:recipe_list' %}">Go Back</a>
     </body>
 </html>
