@@ -55,3 +55,7 @@ class RecipeIngredient(models.Model):
             on_delete=models.CASCADE,
             related_name = 'recipes' # Recipe.recipes accesses RecipeIngredient from Recipe
         )
+
+
+    def __str__(self):
+        return f"{self.recipe} -- {self.ingredient} -- {self.quantity}"
