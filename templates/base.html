@@ -8,10 +8,10 @@
     <header>
         <h1>Recipe Book</h1>
         {% if user.is_authenticated %}
-        <form method='POST' action="{% url 'login' %}">
+        <form method="POST" action="{% url 'login' %}">
 	  {% csrf_token %}
 	  {{ form.as_p }}
-	  <button type="submit">Logout</button>
+	  <button type="SUBMIT">Logout</button>
 	</form>
         {% else %}
             <a href="{% url 'login' %}">Login</a>
