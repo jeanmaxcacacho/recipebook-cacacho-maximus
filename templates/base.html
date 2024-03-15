@@ -8,7 +8,7 @@
     <header>
         <h1>Recipe Book</h1>
         {% if user.is_authenticated %}
-        <form method='POST' action="{% url 'ledger:recipe_list' %}">
+        <form method='POST' action="{% url 'login' %}">
 	  {% csrf_token %}
 	  {{ form.as_p }}
 	  <button type="submit">Logout</button>
