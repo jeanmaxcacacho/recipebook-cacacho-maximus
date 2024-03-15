@@ -1,3 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Recipe List
+{% endblock %}
+
+{% block page_heading %}
+    Welcome to the Recipe List!
+{% endblock %}
+
+{% block content %}
+    <h3>Here are the recipes that we currently have access to...</h3>
+    <ul>
+        {% for recipe in recipe_container %}
+            <li>
+                <strong>{{ recipe.name }}</strong>
+                <ul>
+                    {% for recipe_ingredient in recipe.recipes.all %}
+                        <li>{{ recipe_ingredient.ingredient }} --- {{ recipe_ingredient.quantity }}</li>
+                    {% endfor %}
+                </ul>
+                <a href="{% url 'ledger:recipe_detail' recipe.pk %}">View Recipe</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
 <!DOCTYPE html>
 <html lang="en">
     <head>

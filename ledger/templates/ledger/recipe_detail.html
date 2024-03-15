@@ -1,19 +1,20 @@
-<!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta charset="UTF-8">
-	<title>{{ recipe.name }} by {{ recipe.author }}</title>
-    </head>
-    <body>
-        <h1>Recipe Book</h1>
-        <h2>{{ recipe.name }} by {{ recipe.author }}</h2>
-	<h3>Created on: {{ recipe.created_on }}</h3>
-	<h3>Last updated: {{ recipe.updated_on }}</h3>
-        <ul>
-            {% for ingredient in recipe.recipes.all %}
-            <li>{{ ingredient.ingredient }} --- {{ ingredient.quantity }}</li>
-            {% endfor %}
-        </ul>
-	<a href="{% url 'ledger:recipe_list' %}">Go Back</a>
-    </body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ recipe.name }} by {{ recipe.author }}
+{% endblock %}
+
+{% block page_heading %}
+    {{ recipe.name }} by {{ recipe.author }}
+{% endblock %}
+
+{% block content %}
+    <h3>Created on: {{ recipe.created_on }}</h3>
+    <h3>Last updated: {{ recipe.updated_on }}</h3>
+    <ul>
+        {% for ingredient in recipe.recipes.all %}
+        <li>{{ ingredient.ingredient }} --- {{ ingredient.quantity }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'ledger:recipe_list' %}">Go Back</a>
+{% endblock %}

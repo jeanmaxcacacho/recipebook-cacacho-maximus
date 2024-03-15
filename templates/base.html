@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Recipe Book{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Recipe Book</h1>
+        {% if user.is_authenticated %}
+        <form method='POST' action="{% url 'ledger:recipe_list' %}">
+	  {% csrf_token %}
+	  {{ form.as_p }}
+	  <button type="submit">Logout</button>
+	</form>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </header>
+
+    <main>
+        <h2>{% block page_heading %}{% endblock %}</h2>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
