@@ -1,23 +1,8 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your models here.
-
-"""
-https://stackoverflow.com/questions/2642613/what-is-related-name-used-for
-https://stackoverflow.com/questions/15306897/django-reverse-lookup-of-foreign-keys?fbclid=IwAR3DA6HZVz7oJ64uu6cJGfcfX9a0y0qf52tekSvRDSl-qbHzuxkHJkSoWdg
-"""
-
-""" TODO:
-    - find a way for quantity field of RecipeIngredient be accessible (ask around) __DONE__
-        - last night at 2 AM I learned what reverse lookups are :)
-    - populate models __DONE__
-        - Recipe 1
-        - Recipe 2
-    - make view classes __DONE__
-    - make templates __DONE__
-"""
-
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
@@ -33,6 +18,13 @@ class Ingredient(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
+    author = models.ForeignKey(User,
+                               on_delete=models.CASCADE,
+                               related_name='authored', # future use-cases of this would be to show recipes author as authored so this rel_name makes sense to me
+                               null=True) 
+    created_on = models.DateTimeField(auto_now_add=True, null=True)
+    updated_on = models.DateTimeField(auto_now=True, null=True)
+    
 
 
     def __str__(self):
